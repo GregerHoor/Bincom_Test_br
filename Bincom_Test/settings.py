@@ -44,7 +44,11 @@ if environ.Env.read_env(os.path.join(BASE_DIR, 'Test.env')):
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
-ALLOWED_HOSTS = []
+
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    ALLOWED_HOSTS = ['bincom-test-dxx3.onrender.com', 'https://bincom-test-dxx3.onrender.com']
 
 if DEBUG:
     SECRET_KEY = env('SECRET_KEY')
