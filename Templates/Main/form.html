@@ -1,0 +1,103 @@
+{% extends "Main/home.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="dashboard">
+        <!-- QUESTION 3 -->
+        <section class="panel" id="question3">
+            <div class="panel-header">
+                Question 3 — Enter New Results
+            </div>
+
+            <div class="panel-body">
+                <div class="info-card">
+                    <h3>Create New Polling Unit Result</h3>
+                    <p>Enter the polling-unit details and votes for all parties.</p>
+                </div>
+
+                <form id="results-form" value="">
+                    {% csrf_token %}
+                    <div class="form-grid">
+
+                        <div>
+                            <label for="new-lga">LGA</label>
+                            <select id="new-lga" name="lga" required>
+                                <option value="">Select LGA</option>
+                                {% for lga in lga_all %}
+                                    <option onclick="changeLGA(this, '{{lga.lga_id}}')" value="{{lga.lga_id}}" id="lga_i">{{lga.lga_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="new-party">Party</label>
+                            <select id="new-party" name="party" required>
+                                <option value="">Select Party</option>
+                                {% for party in party_all %}
+                                    <option onclick="changeLGA(this, '{{party.partyid}}')" value="{{party.partyid}}" id="party_i">{{party.partyname}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="new-ward">Ward</label>
+                            <select id="new-ward" name="ward" required>
+                                <option value="">Select Ward</option>
+                                {% for ward in ward_all %}
+                                    <option onclick="changeLGA(this, '{{ward.ward_id}}')" value="{{ward.ward_id}}" id="ward_i">{{ward.ward_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="new-agent">User Name</label>
+                            <select id="new-agent" name="agent" required>
+                                <option value="">Select User</option>
+                                {% for agent in agent_all %}
+                                    <option onclick="changeLGA(this, '{{agent.name_id}}')" value="{{agent.name_id}}" id="ward_i">{{agent.firstname}} {{agent.lastname}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="unit">Polling Unit ID</label>
+                            <input id="unit" name="polling_unit"
+                                placeholder="e.g. PU 005" required>
+                        </div>
+
+                        <div>
+                            <label for="polling_unit_num"> Polling Unit Passkey</label>
+                            <input id="polling_unit_num" name="polling_unit_num"
+                                placeholder="e.g. DJ348H8" required>
+                        </div>
+
+                        <div>
+                            <label for="polling_unit_name">Polling Unit Name</label>
+                            <input id="polling_unit_name" name="polling_unit_name"
+                                placeholder="e.g. Sapele..." required>
+                        </div>
+
+                        <div>
+                            <label for="polling_unit_desc">Polling Unit Decsription</label>
+                            <input id="polling_unit_desc" name="polling_unit_desc"
+                                placeholder="e.g. 23, Ikoja Rd..." required>
+                        </div>
+
+                        <div>
+                            <input type="hidden" id="lat" name="lat" required>
+                        </div>
+
+                        <div>
+                            <input type="hidden" id="long" name="long" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" class="btn-secondary">Reset</button>
+                        <button type="submit" class="btn-primary">Save Results</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

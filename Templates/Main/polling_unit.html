@@ -1,0 +1,83 @@
+{% extends "Main/home.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="dashboard">
+        <!-- QUESTION 1 -->
+        <section class="panel" id="question1">
+            <div class="panel-header">
+                Question 1 — Polling Unit Result
+            </div>
+            <div class="panel-body">
+                <p class="breadcrumb">
+                    Delta State / {{lga_unit.lga_name}} / {{ward_unit.ward_name}} / {{p_unit.polling_unit_name}}
+                </p>
+                <div class="unit-card">
+                    <div class="unit-icon">▣</div>
+                    <div>
+                        <span class="verified">Verified</span>
+                        <h3>{{ward_unit.ward_name}}, {{p_unit.polling_unit_name}}</h3>
+                        <p>{{lga_unit.lga_name}} LGA, Delta State</p>
+                        <small>Polling Unit Code: {{p_unit.uniqueid}}</small>
+                    </div>
+                </div>
+                <h3 class="section-title">Polling Unit Results</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Political Party</th>
+                                <th>Abbr.</th>
+                                <th>Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td> value</td>
+                                <td>value</td>
+                                <td>value</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="summary">
+                    <div>
+                        <small>Total Valid Votes</small>
+                        <h2>Value</h2>
+                    </div>
+                    <div>
+                        <small>Rejected Votes</small>
+                        <h2>Value</h2>
+                    </div>
+                    <div>
+                        <small>Total Votes Cast</small>
+                        <h2>Value</h2>
+                    </div>
+                </div>
+                <h3 class="section-title">Votes Distribution</h3>
+                <div class="vote-bar">
+                    <span>W</span>
+                    <div class="bar"><div class="fill blue" style="width:10%"></div></div>
+                    <strong>1</strong>
+                </div>
+                <div class="vote-bar">
+                    <span>X</span>
+                    <div class="bar"><div class="fill green" style="width:10%"></div></div>
+                    <strong>1</strong>
+                </div>
+                <div class="vote-bar">
+                    <span>Y</span>
+                    <div class="bar"><div class="fill orange" style="width:10%"></div></div>
+                    <strong>1</strong>
+                </div>
+                <div class="vote-bar">
+                    <span>Z</span>
+                    <div class="bar"><div class="fill purple" style="width:10%"></div></div>
+                    <strong>1</strong>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

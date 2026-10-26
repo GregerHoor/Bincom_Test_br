@@ -1,0 +1,90 @@
+{% extends "Main/home.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="polling-container">
+        <div class="polling-unit-header">
+        </div>
+        
+        <ul>
+
+            <main class="dashboard">
+                <!-- QUESTION 2 -->
+                <section class="panel" id="question2">
+                    <div class="panel-header">
+                        Question 2 — LGA Totals
+                    </div>
+
+                    <div class="panel-body">
+                        <label for="lga">Select Local Government Area</label>
+                        <select id="lga" name="lga">
+                            <option>Choose LGA</option>
+                            {% for lga in lga_all %}
+                                <option value="{{lga.lga_id}}">{{lga.lga_name}}</option>
+                            {% endfor %}
+                        </select>
+
+                        <div class="info-card">
+                            <h3>Aniocha North</h3>
+                            <p>Delta State · Aggregated polling-unit results</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <h3>Polling Units</h3>
+                            <h2>280</h2>
+                        </div>
+                            
+
+                        <h3 class="section-title">Summed LGA Results</h3>
+
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Poll Unit No.</th>
+                                        <th>Poll Unit Name</th>
+                                        <th>Poll Unit Count</th>
+                                        <th>Poll User</th>
+                                        <th><svg xmlns="http://www.w3.org/2000/svg" height="17px" viewBox="0 -960 960 960" width="17px" fill="blue"><path d="M480-360 280-560h400L480-360Z"/></svg></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for unit in polling_all %}
+                                        <tr onclick="goToUnit('{{unit.uniqueid}}')" data-id="{{unit.lga_id}}">
+                                            <td>
+                                                {{unit.polling_unit_number}} 
+                                            </td>
+                                            <td>
+                                                {{unit.polling_unit_name}} 
+                                            </td>
+                                            <td>
+                                                {{unit.polling_unit_id}} 
+                                            </td>
+                                            <td>
+                                                {{unit.entered_by_user}} 
+                                            </td>
+                                            <td>
+                                                <select class="d-none" id="polling-select-{{unit.uniqueid}}"></select>
+                                                <label for="polling-select-{{unit.uniqueid}}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="17px" viewBox="0 -960 960 960" width="17px" fill="#1f1f1f"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="notice">
+                            These totals should be calculated by summing the results
+                            of all polling units belonging to the selected LGA.
+                            Announced LGA results were not used for the table.
+                        </p>
+                    </div>
+                </section>
+            </main>
+        </ul>
+    </div>
+{% endblock content %}
